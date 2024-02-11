@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mockito;
-import ru.otus.education.models.*;
+import ru.otus.education.models.Spaceship;
 import ru.otus.education.models.action.Rotatable;
 import ru.otus.education.models.adapter.RotatableAdapter;
 import ru.otus.education.models.command.Rotate;

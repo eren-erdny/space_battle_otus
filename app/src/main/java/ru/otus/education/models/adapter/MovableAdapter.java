@@ -1,7 +1,7 @@
 package ru.otus.education.models.adapter;
 
-import ru.otus.education.models.action.Movable;
 import ru.otus.education.models.Spaceship;
+import ru.otus.education.models.action.Movable;
 import ru.otus.education.models.util.Vector;
 
 public class MovableAdapter implements Movable {

@@ -1,8 +1,8 @@
 package ru.otus.education.models.adapter;
 
-import ru.otus.education.models.util.Angle;
-import ru.otus.education.models.action.Rotatable;
 import ru.otus.education.models.Spaceship;
+import ru.otus.education.models.action.Rotatable;
+import ru.otus.education.models.util.Angle;
 
 public class RotatableAdapter implements Rotatable {
 

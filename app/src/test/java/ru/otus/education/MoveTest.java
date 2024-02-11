@@ -3,7 +3,7 @@ package ru.otus.education;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import ru.otus.education.models.*;
+import ru.otus.education.models.Spaceship;
 import ru.otus.education.models.action.Movable;
 import ru.otus.education.models.adapter.MovableAdapter;
 import ru.otus.education.models.command.Move;
