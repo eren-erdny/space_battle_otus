@@ -1,5 +1,8 @@
 package ru.otus.education.models;
 
+import ru.otus.education.models.util.Angle;
+import ru.otus.education.models.util.Vector;
+
 public class Spaceship {
     private Vector velocity;
     private Vector position;

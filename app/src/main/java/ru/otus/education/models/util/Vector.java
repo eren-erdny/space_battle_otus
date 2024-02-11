@@ -1,4 +1,4 @@
-package ru.otus.education.models;
+package ru.otus.education.models.util;
 
 public class Vector {
 
