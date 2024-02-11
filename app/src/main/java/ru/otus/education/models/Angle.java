@@ -22,7 +22,7 @@ public class Angle {
     }
 
     public static boolean equal(Angle angle1, Angle angle2) {
-        return angle1.direction == angle2.direction;
+        return angle1.direction == angle2.direction && angle1.directionsNumber == angle2.directionsNumber;
     }
 
     public Integer getDirectionsNumber() {
