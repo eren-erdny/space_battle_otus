@@ -32,31 +32,38 @@ public class ExceptionHandlingTest {
 
     @Test
     void whenCommandExecute_thenExceptionHandlerCalled() {
+        // Given
         AtomicBoolean isHandlerCalled = new AtomicBoolean(false);
         TestUtility.registerMockCommand(
                 (cmd, exc) -> {
                     isHandlerCalled.set(true);
                     return null;
                 });
+        // When
         TestUtility.runCommands(commandQueue);
+        // Then
         Assertions.assertTrue(isHandlerCalled.get());
     }
 
     @Test
     void whenCommandExecute_thenLogIntoFile() {
+        // Given
         TestUtility.registerMockCommand(
                 (cmd, ex) -> {
                     var exClassName = ex.getClass().getSimpleName();
                     commandQueue.push(new LogToFile(exClassName));
                     return null;
                 });
+        // When
         TestUtility.runCommands(commandQueue);
+        // Then
         var logContent = TestUtility.getLogFileContent();
         Assertions.assertEquals("MockException", logContent);
     }
 
     @Test
     void whenCommandExecuteThrows_thenCommandRepeated() {
+        // Given
         AtomicBoolean isRepeated = new AtomicBoolean(Boolean.FALSE);
         TestUtility.registerMockCommand(
                 (cmd, ex) -> {
@@ -71,12 +78,15 @@ public class ExceptionHandlingTest {
                     isRepeated.set(Boolean.TRUE);
                    return null;
                 });
+        // When
         TestUtility.runCommands(commandQueue);
+        // Then
         Assertions.assertTrue(isRepeated.get());
     }
 
     @Test
     void whenCommandExecuted_thenRepeat_thenWriteToLog() {
+        // Given
         var expectedLog = "Repeat";
         TestUtility.registerMockCommand(
                 (cmd, ex) -> {
@@ -91,12 +101,15 @@ public class ExceptionHandlingTest {
                     commandQueue.push(new LogToFile(cmd.getClass().getSimpleName()));
                     return null;
                 });
+        // When
         TestUtility.runCommands(commandQueue);
+        // Then
         Assertions.assertEquals(expectedLog, TestUtility.getLogFileContent());
     }
 
     @Test
     void whenCommandExecuted_thenRepeatTwoTimes_thenWriteToLog() {
+        // Given
         var expectedLog = "SecondRepeat";
         TestUtility.registerMockCommand(
                 (cmd, ex) -> {
@@ -122,12 +135,15 @@ public class ExceptionHandlingTest {
                     return logToFile;
                 }
         );
+        // When
         TestUtility.runCommands(commandQueue);
+        // Then
         Assertions.assertEquals(expectedLog, TestUtility.getLogFileContent());
     }
 
     @Test
     void whenCommandExecuted_thenSecondRepeatNotAfterFirst() {
+        // Given
         TestUtility.registerMockCommand(
                 (cmd, ex) -> {
                     var mockRepeat = new MockRepeatCommand();
@@ -144,6 +160,7 @@ public class ExceptionHandlingTest {
                     return secondRepeat;
                 }
         );
+        // When
         Assertions.assertThrows(RuntimeException.class, () -> TestUtility.runCommands(commandQueue));
     }
 
