@@ -20,11 +20,10 @@ public class MovableWithRotationAdapter implements Movable {
     @Override
     public Vector getVelocity() {
         var angle = spaceShip.getAngle();
-        var v = spaceShip.getAngularVelocity();
+        var v = spaceShip.getVelocityModula();
         return new Vector(
                 v * Math.cos(angle.toDouble()),
-                v * Math.sin(angle.toDouble())
-        );
+                v * Math.sin(angle.toDouble()));
     }
 
     @Override

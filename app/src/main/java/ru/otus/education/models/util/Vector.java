@@ -1,11 +1,11 @@
 package ru.otus.education.models.util;
 
-import java.util.Arrays;
-
 import static java.lang.Math.min;
 
 public class Vector {
-    double [] coordinates;
+
+    private static final double EPSILON = 10e-10;
+    private final double[] coordinates;
 
     public Vector(double...coordinates) {
         this.coordinates = coordinates;
@@ -37,6 +37,14 @@ public class Vector {
     }
 
     public static boolean equal(Vector vector1, Vector vector2) {
-        return Arrays.equals(vector1.coordinates, vector2.coordinates);
+        var sameLength = vector1.coordinates.length == vector2.coordinates.length;
+        var sequentialEqual = true;
+        for (int i = 0; i < vector1.coordinates.length; i++) {
+            if (Math.abs(vector1.coordinates[i] - vector2.coordinates[i]) > EPSILON) {
+                sequentialEqual = false;
+                break;
+            }
+        }
+        return sameLength && sequentialEqual;
     }
 }

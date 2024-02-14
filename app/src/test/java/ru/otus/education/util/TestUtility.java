@@ -1,5 +1,8 @@
 package ru.otus.education.util;
 
+import ru.otus.education.models.Spaceship;
+import ru.otus.education.models.action.Fuelable;
+import ru.otus.education.models.adapter.FuelableAdapter;
 import ru.otus.education.models.command.Command;
 import ru.otus.education.models.exception.CommandQueue;
 import ru.otus.education.models.exception.ExceptionHandler;
@@ -36,6 +39,11 @@ public class TestUtility {
                 "MockCommand",
                 "MockException",
                 function);
+    }
+
+    public static Fuelable getAdapter(int fuelLevel, int fuelConsumption) {
+        var spaceship = new Spaceship(fuelLevel, fuelConsumption);
+        return new FuelableAdapter(spaceship);
     }
 
 }

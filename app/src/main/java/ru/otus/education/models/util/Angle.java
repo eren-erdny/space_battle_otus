@@ -17,7 +17,7 @@ public class Angle {
         return new Angle(direction, directionsNumber);
     }
 
-    public Double toDouble() {
+    public double toDouble() {
         return (double) this.direction / this.directionsNumber * TWO_PI;
     }
 

@@ -9,11 +9,19 @@ public class Spaceship {
     private Angle angle;
     private Integer angularVelocity;
 
-    public Spaceship(Vector velocity, Vector position, Angle angle, Integer angularVelocity) {
-        this.velocity = velocity;
+    private Integer fuelLevel;
+
+    private Integer fuelConsumption;
+
+    private Integer velocityModula;
+
+    public Spaceship(Integer velocityModula, Vector position, Angle angle, Integer angularVelocity, Integer fuelLevel, Integer fuelConsumption) {
+        this.velocityModula = velocityModula;
         this.position = position;
         this.angle = angle;
         this.angularVelocity = angularVelocity;
+        this.fuelLevel = fuelLevel;
+        this.fuelConsumption = fuelConsumption;
     }
 
     public Spaceship(Vector velocity, Vector position) {
@@ -24,6 +32,18 @@ public class Spaceship {
     public Spaceship(Angle angle, Integer angularVelocity) {
         this.angle = angle;
         this.angularVelocity = angularVelocity;
+    }
+
+    public Spaceship(Integer fuelLevel, Integer fuelConsumption) {
+        this.fuelLevel = fuelLevel;
+        this.fuelConsumption = fuelConsumption;
+    }
+
+    public Spaceship(Vector position, Vector velocity, Integer fuelLevel, Integer fuelConsumption) {
+        this.position = position;
+        this.velocity = velocity;
+        this.fuelLevel = fuelLevel;
+        this.fuelConsumption = fuelConsumption;
     }
 
     public Vector getVelocity() {
@@ -48,5 +68,21 @@ public class Spaceship {
 
     public void setAngle(Angle angle) {
         this.angle = angle;
+    }
+
+    public Integer getFuelLevel() {
+        return fuelLevel;
+    }
+
+    public void setFuelLevel(Integer fuelLevel) {
+        this.fuelLevel = fuelLevel;
+    }
+
+    public Integer getFuelConsumption() {
+        return fuelConsumption;
+    }
+
+    public Integer getVelocityModula() {
+        return velocityModula;
     }
 }
