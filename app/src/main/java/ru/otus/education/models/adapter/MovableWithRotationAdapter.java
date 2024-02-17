@@ -1,4 +1,8 @@
-package ru.otus.education.models;
+package ru.otus.education.models.adapter;
+
+import ru.otus.education.models.Spaceship;
+import ru.otus.education.models.action.Movable;
+import ru.otus.education.models.util.Vector;
 
 public class MovableWithRotationAdapter implements Movable {
 
@@ -16,11 +20,10 @@ public class MovableWithRotationAdapter implements Movable {
     @Override
     public Vector getVelocity() {
         var angle = spaceShip.getAngle();
-        var v = spaceShip.getAngularVelocity();
+        var v = spaceShip.getVelocityModula();
         return new Vector(
                 v * Math.cos(angle.toDouble()),
-                v * Math.sin(angle.toDouble())
-        );
+                v * Math.sin(angle.toDouble()));
     }
 
     @Override

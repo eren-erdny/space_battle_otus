@@ -1,10 +1,13 @@
-package ru.otus.education.models;
+package ru.otus.education.models.command;
 
-public class MoveCommand implements Command {
+import ru.otus.education.models.action.Movable;
+import ru.otus.education.models.util.Vector;
+
+public class Move implements Command {
 
     private final Movable movable;
 
-    public MoveCommand(Movable movable) {
+    public Move(Movable movable) {
         this.movable = movable;
     }
 

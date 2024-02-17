@@ -5,7 +5,11 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mockito;
-import ru.otus.education.models.*;
+import ru.otus.education.models.Spaceship;
+import ru.otus.education.models.action.Rotatable;
+import ru.otus.education.models.adapter.RotatableAdapter;
+import ru.otus.education.models.command.Rotate;
+import ru.otus.education.models.util.Angle;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
@@ -22,7 +26,7 @@ public class RotateTest {
         var angle = new Angle(1, 8);
         var spaceship = new Spaceship(angle, velocity);
         var rotatableAdapter = new RotatableAdapter(spaceship);
-        var rotateCommand = new RotateCommand(rotatableAdapter);
+        var rotateCommand = new Rotate(rotatableAdapter);
         // When
         rotateCommand.execute();
         // Then
@@ -34,7 +38,7 @@ public class RotateTest {
         // Given
         Mockito.when(rotatableMock.getAngularVelocity()).thenThrow(RuntimeException.class);
         // When
-        var rotateCommand = new RotateCommand(rotatableMock);
+        var rotateCommand = new Rotate(rotatableMock);
         // Then
         Assertions.assertThrows(RuntimeException.class, rotateCommand::execute);
     }
@@ -44,7 +48,7 @@ public class RotateTest {
         // Given
         Mockito.when(rotatableMock.getAngle()).thenThrow(RuntimeException.class);
         // When
-        var rotateCommand = new RotateCommand(rotatableMock);
+        var rotateCommand = new Rotate(rotatableMock);
         // Then
         Assertions.assertThrows(RuntimeException.class, rotateCommand::execute);
     }
@@ -54,7 +58,7 @@ public class RotateTest {
         // Given
         Mockito.doThrow(RuntimeException.class).when(rotatableMock).setAngle(any(Angle.class));
         // When
-        var rotateCommand = new RotateCommand(rotatableMock);
+        var rotateCommand = new Rotate(rotatableMock);
         // Then
         Assertions.assertThrows(RuntimeException.class, rotateCommand::execute);
     }
@@ -67,7 +71,7 @@ public class RotateTest {
         var spaceship = new Spaceship(angle, angularVelocity);
         var rotatableAdapter = new RotatableAdapter(spaceship);
         // When
-        var rotateCommand = new RotateCommand(rotatableAdapter);
+        var rotateCommand = new Rotate(rotatableAdapter);
         // Then
         Assertions.assertThrows(RuntimeException.class, rotateCommand::execute);
     }

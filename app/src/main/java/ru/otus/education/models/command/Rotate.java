@@ -1,9 +1,11 @@
-package ru.otus.education.models;
+package ru.otus.education.models.command;
 
-public class RotateCommand implements Command{
+import ru.otus.education.models.action.Rotatable;
+
+public class Rotate implements Command{
     private final Rotatable rotatable;
 
-    public RotateCommand(Rotatable rotatable) {
+    public Rotate(Rotatable rotatable) {
         this.rotatable = rotatable;
     }
 
