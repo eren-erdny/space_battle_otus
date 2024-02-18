@@ -8,7 +8,7 @@ public class RotatableAdapter implements Rotatable {
 
     Spaceship spaceship;
 
-    public /**/RotatableAdapter(Spaceship spaceship) {
+    public RotatableAdapter(Spaceship spaceship) {
         this.spaceship = spaceship;
     }
 
